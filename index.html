@@ -156,7 +156,7 @@
             const dibujar_menu = (arr_categorias) => {
                 let barra_menu = $('#barra_menu');
                 let html=`<li class="nav-item active">
-                            <a class="nav-link Menu menu_inicio" id="menu_inicio" aria-current="page" href="#"> INICIO</a>
+                            <a class="nav-link Menu menu_inicio" id="menu_inicio" aria-current="page" href=""> INICIO</a>
                          </li>`;
                 
                 arr_categorias.forEach((reg) => {
@@ -165,7 +165,7 @@
 
                     if (estado_categoria){
                         html+=`<li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="${reg._id}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="" id="${reg._id}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         ${reg.nombre}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="${reg._id}">` +
