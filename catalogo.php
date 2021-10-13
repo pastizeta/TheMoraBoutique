@@ -70,6 +70,7 @@
     <div class="row text-center pt-5" style="color: violet;">
         <hr>
         <p>Puedes contactarnos por cualquiera de los medios para solicitar tu producto, visitanos en Facebook, Instagram o mandanos un WhatsApp!!!</p>
+        <p> <strong>¡¡ YA TENEMOS MESES SIN INTERESES PREGUNTA POR LA PROMOCION !!!</strong></p>
         <hr>
     </div>
     
