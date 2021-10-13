@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>The MoraBoutique</title>
+    <style>
+        .fa-facebook{
+            font-size: 4rem;
+            color: #5572DC;
+        }
+        .fa-instagram{
+            font-size: 4rem;
+            color: white;
+        }
+        .fa-whatsapp{
+            font-size: 4rem;
+            color: green;
+        }
+        .navbar-brand{
+            font-size: 3rem;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
+            border-bottom-color: #E94CF8;
+            border-bottom-style: solid;
+        }
+
+        .nav-link{
+            color: #E94CF8 !important; 
+            padding-left: 5rem !important;
+            font-family:Verdana, Geneva, Tahoma, sans-serif !important;
+        }
+        hr{
+            width: 70%;
+        }
+
+       
+        body,html{
+            width: 100vw;
+            width: 100%;
+            margin: 0;
+            padding: 0%;
+        }
+        .contenido_dinamico,.contenedor-general{
+            width: 100vw;
+            width: 100%;
+            padding: 0%;
+        }
+
+
+        @media (max-width: 1024px) {
+            .navbar-brand{
+                font-size: 2rem;
+            }
+
+            .fa-facebook{
+                font-size: 2rem;
+                color: #5572DC;
+            }
+            .fa-instagram{
+                font-size: 2rem;
+                color: white;
+            }
+            .fa-whatsapp{
+                font-size: 2rem;
+                color: green;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+            .navbar-brand{
+                font-size: 1.5rem;
+            }
+
+            .fa-facebook{
+                font-size: 1rem;
+                color: #5572DC;
+            }
+            .fa-instagram{
+                font-size: 1rem;
+                color: white;
+            }
+            .fa-whatsapp{
+                font-size: 1rem;
+                color: green;
+            }
+
+           
+        }
+
+    
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(async()=>{
+            let url_API = 'https://7bdb-187-244-127-201.ngrok.io/api';
+
+
+            //obtener categorias para menu
+            const obt_categorias = async() => {
+                const respuesta = await fetch(`${url_API}/categorias/?limite=100&desde=0`)
+
+                if(respuesta.ok){
+					const json = await respuesta.json();
+                    dibujar_menu(json.categorias);
+                    
+                }else{
+                    let respErr = await respuesta.json();
+                    alert(respErr);
+                    return;
+                }
+            }
+
+            const dibujar_menu = (arr_categorias) => {
+                let barra_menu = $('#barra_menu');
+                let html=`<li class="nav-item">
+                            <a class="nav-link Menu menu_inicio" id="menu_inicio" aria-current="page" href="#"> INICIO</a>
+                         </li>`;
+                
+                arr_categorias.forEach((reg) => {
+
+                    let estado_categoria = reg.estado;
+
+                    if (estado_categoria){
+                        html+=`<li class="nav-item dropdown">
+                                <a class="nav-link Menu dropdown-toggle" href="#" id="${reg._id}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                ${reg.nombre}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">` +
+                                    dibujar_submenus(reg.subcategorias)
+                                + `</ul>
+                            </li>`
+                    }
+                   
+                });
+
+                barra_menu.html(html);
+
+            }
+
+            const dibujar_submenus=(arr_subcategorias)=>{
+
+                let html = ``;
+
+                arr_subcategorias.forEach((reg)=>{
+                    let estado_subcategoria = reg.estado;
+
+                    if(estado_subcategoria == true){
+                        html += `
+                             <li><a class="dropdown-item" href="#" id="${reg._id}">${reg.nombre}</a></li>
+                            `
+                    }
+                    
+                });
+                return html;
+            }
+            
+            
+            $('#barra_menu').on('click','.menu_inicio',function(){
+                $("#contenido_dinamico").load('inicio.html');
+                $("#pie_pagina").load('pie.html');
+            })
+            await obt_categorias();
+            $("#contenido_dinamico").load('inicio.html');
+            $("#pie_pagina").load('pie.html');
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="container-fluid contenedor-general">
+        <div class="row text-center" style="background-color: #E94CF8">
+            <div class="col-lg-2 col-sm-12 col-xs-12"></div>
+            <div class="col-lg-8 col-sm-12 col-xs-12 text-center"><h2 style="color: white;">¡Envios Gratis desde $1500!</h2><br><h2 style="color: white;">¡Contactanos!</h2></div>
+            <div class="col-lg-2 col-sm-12 col-xs-12">
+                <div class="row p-2">
+                    <div class="col-4"><a href="https://www.facebook.com/MoraBoutiquemx" target="_blank"><i class="fab fa-facebook"></i></a></div>
+                    <div class="col-4"><a href="https://www.instagram.com/themoraboutique.mx" target="_blank"><i class="fab fa-instagram"></i></a></div>
+                    <div class="col-4"><a href="https://wa.me/message/EFILHSVX67IDK1" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light" >
+                <div class="container-fluid">
+                 
+                  <a class="navbar-brand" href="#" style="color:#E94CF8;">
+                    The MoraBoutique
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id ="barra_menu">
+                      
+                    </ul>
+                   
+                  </div>
+                </div>
+              </nav>
+        </div>
+        
+        <div id="contenido_dinamico"></div>
+
+        <div id="pie_pagina"></div>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
