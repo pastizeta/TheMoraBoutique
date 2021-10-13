@@ -71,6 +71,10 @@
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
     color: white;
   }
+
+  .img_carousel{
+    height: 700px !important;
+  }
   /*media querys*/
   @media (max-width: 1024px) {
            
@@ -121,6 +125,9 @@
       font-size: 1.5rem;
       font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
     }
+    .img_carousel{
+      height: 100% !important;
+    }
 
   }
 
@@ -170,6 +177,10 @@
       font-size: 1.2rem;
       font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
     }
+
+    .img_carousel{
+      height: 100% !important;
+    }
   }
 </style>
 <div class="row">
@@ -177,13 +188,13 @@
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="1000">
-              <img src="./img/banner.jpg" class="d-block w-100" alt="...">
+              <img src="./img/banner.jpg" class="img_carousel d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="1000">
-              <img src="./img/banner2.jpg" class="d-block w-100" alt="...">
+              <img src="./img/banner2.jpg" class=" img_carousel d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-bs-interval="1000">
-              <img src="./img/banner3.jpg" class="d-block w-100" alt="...">
+              <img src="./img/banner3.jpg" class=" img_carousel d-block w-100" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
