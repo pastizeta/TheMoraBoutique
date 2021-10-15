@@ -32,12 +32,26 @@
         color: #A70DB0;
     }
 
+    @media (max-width: 1024px) {
+        .breadcrumb-item{
+            font-size: 1.5rem;
+        }
+
+    }
+
+    @media (max-width: 600px) {
+        .breadcrumb-item{
+        font-size: 1rem;
+    }
+    }
+    
+
 </style>
 
 <script>
     $(document).ready(async()=>{
         //const productos = await getProductos(limitexpagina,desde_art,"0");
-        let limitexpagina = 9;
+        let limitexpagina = 25;
         let desde_art = 0;
         let id_catego = $('#id_catego').val();
         let id_sub_catego = $('#id_sub_catego').val();

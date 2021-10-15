@@ -73,7 +73,7 @@ class Productos {
             }
             
           
-            html+= `<div class="col-lg-4 col-md-6 col-xs-12 col-sm-12 pt-3">
+            html+= `<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 pt-3">
                 <div class="card">
                     <img id="img_${producto._id}" src="${producto.img}" width="200" height="300" class="card-img-top" alt="...">
                     <div class="card-body">
