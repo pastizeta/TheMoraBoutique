@@ -24,17 +24,24 @@
 
     .precio{
         font-size: 2rem;
-        color: #E94CF8;
+        color: #BA4693;
     }
 
     .breadcrumb-item{
         font-size: 2rem;
-        color: #A70DB0;
+        color: #BA4693;
     }
+
+    .texto-productos{
+            padding-top: 5;
+        }
 
     @media (max-width: 1024px) {
         .breadcrumb-item{
             font-size: 1.5rem;
+        }
+        .texto-productos{
+            padding-top: 2;
         }
 
     }
@@ -42,7 +49,11 @@
     @media (max-width: 600px) {
         .breadcrumb-item{
         font-size: 1rem;
+
     }
+    .texto-productos{
+            padding-top: 2;
+        }
     }
     
 
@@ -81,7 +92,7 @@
 
 <div class="container">
 
-    <div class="row text-center pt-5" style="color: violet;">
+    <div class="row text-center texto-productos" style="color: #BA4693;">
         <hr>
         <p>Puedes contactarnos por cualquiera de los medios para solicitar tu producto, visitanos en Facebook, Instagram o mandanos un WhatsApp!!!</p>
         <p> <strong>¡¡ YA TENEMOS MESES SIN INTERESES PREGUNTA POR LA PROMOCION !!!</strong></p>
